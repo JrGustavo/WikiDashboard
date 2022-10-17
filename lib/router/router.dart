@@ -11,7 +11,7 @@ class Flurorouter {
 
   // Auth Router
   static String loginRoute    = '/auth/login';
-  static String registerRoute = '/auth/register';
+  static String registerRoute = '';
 
   // Dashboard
   static String dashboardRoute = '/dashboard';

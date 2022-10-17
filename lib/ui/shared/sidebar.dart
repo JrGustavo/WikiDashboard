@@ -11,6 +11,8 @@ import 'package:admin_dashboard/ui/shared/widgets/menu.dart';
 import 'package:admin_dashboard/ui/shared/widgets/logo.dart';
 import 'package:admin_dashboard/ui/shared/widgets/text_separator.dart';
 
+import '../../providers/auth_provider.dart';
+
 
 class Sidebar extends StatelessWidget {
  
@@ -89,7 +91,13 @@ class Sidebar extends StatelessWidget {
 
           SizedBox( height: 50 ),
           TextSeparator( text: 'Exit' ),
-          Menu( text: 'Salir', icon: Icons.exit_to_app_outlined, onPressed: (){}),
+          Menu(
+          text: 'Salir',
+              icon: Icons.exit_to_app_outlined,
+              onPressed: (){
+                  Provider.of<AuthProvider>(context, listen: false)
+                  .logout();
+              }),
         ],
       ),
     );

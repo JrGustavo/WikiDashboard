@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/datatables/categories_datasource.dart';
 import 'package:admin_dashboard/providers/categories_provider.dart';
+import 'package:admin_dashboard/ui/modals/category_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:admin_dashboard/ui/labels/custom_labels.dart';
 import 'package:provider/provider.dart';
@@ -24,10 +25,11 @@ class _CategoriesViewState extends State<CategoriesView> {
   Provider.of<CategoriesProvider>(context, listen: false).getCategories();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
+
+    final categorias = Provider.of<CategoriesProvider>(context).categorias;
+
     return Container(
       child: ListView(
         physics: ClampingScrollPhysics(),
@@ -44,7 +46,7 @@ class _CategoriesViewState extends State<CategoriesView> {
               DataColumn(label: Text('Creado por ')),
               DataColumn(label: Text('Acciones')),
             ],
-            source: CategoriesDTS(),
+            source: CategoriesDTS(categorias, context),
             header:  Text('Categorias disponibles', maxLines: 2),
             onRowsPerPageChanged: ( value) {
               setState(() {
@@ -54,7 +56,13 @@ class _CategoriesViewState extends State<CategoriesView> {
             rowsPerPage: _rowsPerPage,
             actions: [
               CustomButtonIcon(
-                onPressed: () {},
+                onPressed: () {
+                  showModalBottomSheet(
+                    backgroundColor: Colors.transparent,
+                   context: context,
+                   builder: ( _ ) => CategoryModal(categoria:null)
+                  );
+                },
                 text: 'Crear',
                 icon: Icons.add_outlined
               )

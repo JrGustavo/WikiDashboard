@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-class CategoriesResponse {
-  CategoriesResponse({
+class Categoria {
+  Categoria({
     required this.id,
-    required this.name,
+    required this.nombre,
     required this.parentId,
     required this.position,
     required this.image,
@@ -14,7 +14,7 @@ class CategoriesResponse {
   });
 
   int id;
-  String name;
+  String nombre;
   int parentId;
   int position;
   String image;
@@ -23,15 +23,15 @@ class CategoriesResponse {
   DateTime updatedAt;
   List<dynamic> translations;
 
-  factory CategoriesResponse.fromJson(String str) => CategoriesResponse.fromMap(json.decode(str));
+  factory Categoria.fromJson(String str) => Categoria.fromMap(json.decode(str));
 
   get categorias => null;
 
   String toJson() => json.encode(toMap());
 
-  factory CategoriesResponse.fromMap(Map<String, dynamic> json) => CategoriesResponse(
+  factory Categoria.fromMap(Map<String, dynamic> json) => Categoria(
     id: json["id"],
-    name: json["name"],
+    nombre: json["name"],
     parentId: json["parent_id"],
     position: json["position"],
     image: json["image"],
@@ -43,7 +43,7 @@ class CategoriesResponse {
 
   Map<String, dynamic> toMap() => {
     "id": id,
-    "name": name,
+    "name": nombre,
     "parent_id": parentId,
     "position": position,
     "image": image,
@@ -53,3 +53,5 @@ class CategoriesResponse {
     "translations": List<dynamic>.from(translations.map((x) => x)),
   };
 }
+
+

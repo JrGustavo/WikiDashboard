@@ -27,6 +27,8 @@ class CategoriesResponse {
 
   factory CategoriesResponse.fromJson(String str) => CategoriesResponse.fromMap(json.decode(str));
 
+  get categorias => null;
+
   String toJson() => json.encode(toMap());
 
   factory CategoriesResponse.fromMap(Map<String, dynamic> json) => CategoriesResponse(
